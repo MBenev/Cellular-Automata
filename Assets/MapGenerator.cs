@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using System;
 
 public class MapGenerator : MonoBehaviour
 {
+
     public int width;
     public int height;
 
@@ -16,16 +16,14 @@ public class MapGenerator : MonoBehaviour
 
     int[,] map;
 
-    // Start is called before the first frame update
     void Start()
     {
         GenerateMap();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetMouseButtonDown(0))
         {
             GenerateMap();
         }
@@ -36,11 +34,15 @@ public class MapGenerator : MonoBehaviour
         map = new int[width, height];
         RandomFillMap();
 
-        for (int i =0;i<5;i++)
+        for (int i = 0; i < 5; i++)
         {
             SmoothMap();
         }
+
+        MeshGenerator meshGen = GetComponent<MeshGenerator>();
+        meshGen.GenerateMesh(map, 1);
     }
+
 
     void RandomFillMap()
     {
@@ -74,14 +76,12 @@ public class MapGenerator : MonoBehaviour
             for (int y = 0; y < height; y++)
             {
                 int neighbourWallTiles = GetSurroundingWallCount(x, y);
+
                 if (neighbourWallTiles > 4)
-                {
                     map[x, y] = 1;
-                }
-                else if (neighbourWallTiles <4)
-                {
+                else if (neighbourWallTiles < 4)
                     map[x, y] = 0;
-                }
+
             }
         }
     }
@@ -106,23 +106,24 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+
         return wallCount;
     }
 
+
     void OnDrawGizmos()
     {
-        if (map != null)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    Gizmos.color = (map[x, y] == 1) ? Color.black : Color.white;
-                    Vector3 pos = new Vector3(-width / 2 + x + .5f, 0, -height / 2 + y + 0.5f);
-                    Gizmos.DrawCube(pos, Vector3.one);
-                }
-            }
-
-        }
+        /*
+		if (map != null) {
+			for (int x = 0; x < width; x ++) {
+				for (int y = 0; y < height; y ++) {
+					Gizmos.color = (map[x,y] == 1)?Color.black:Color.white;
+					Vector3 pos = new Vector3(-width/2 + x + .5f,0, -height/2 + y+.5f);
+					Gizmos.DrawCube(pos,Vector3.one);
+				}
+			}
+		}
+		*/
     }
+
 }
