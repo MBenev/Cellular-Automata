@@ -17,6 +17,7 @@ public class MapGenerator : MonoBehaviour
     bool useRandomSeed;
 
     public InputField seedInput;
+    public Toggle randomSeedInput;
     public Slider widthInput;
     public Slider heightInput;
     public Slider fillPercentSlider;
@@ -30,10 +31,20 @@ public class MapGenerator : MonoBehaviour
         widthInput = GameObject.Find("Slider Width").GetComponent<Slider>();
         heightInput = GameObject.Find("Slider Height").GetComponent<Slider>();
         seedInput = GameObject.Find("Input Seed").GetComponent<InputField>();
+        randomSeedInput = GameObject.Find("Input Random Seed").GetComponent<Toggle>();
     }
 
     void Update()
     {
+    }
+
+    public void RandomSeed(bool selected)
+    {
+        useRandomSeed = selected;
+        if (!selected)
+        {
+            ChangeSeed();
+        }
     }
 
     public void ChangeSeed()
