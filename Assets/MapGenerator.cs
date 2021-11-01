@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 
 
+
 public class MapGenerator : MonoBehaviour
 {
 
@@ -14,7 +15,7 @@ public class MapGenerator : MonoBehaviour
     public string seed;
     public bool useRandomSeed;
 
-    ///[Range(0, 100)]
+    //[Range(0, 100)]
     //public int randomFillPercent;
     public Slider fillPercentSlider;
     int randomFillPercent;
@@ -24,22 +25,17 @@ public class MapGenerator : MonoBehaviour
     void Start()
     {
         //GenerateMap();
+        fillPercentSlider = GameObject.Find("Slider Fill Percent").GetComponent<Slider>();
     }
 
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    GenerateMap();
-        //}
-        //randomFillPercent = GetComponent<int>();
-
     }
 
-    //public void FillPercentSlider()
-    //{
-    //    randomFillPercent = ;
-    //}
+    public void ChangeFillPercent()
+    {
+        randomFillPercent = (int)fillPercentSlider.value;
+    }
 
     public void GenerateButtonClick()
     {

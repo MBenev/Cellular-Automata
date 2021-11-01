@@ -14,7 +14,12 @@ public class Percentage : MonoBehaviour
 
     public void PercentageUpdate (float value)
     {
-        Debug.Log(value);   
+        //Debug.Log(value);   
         percentageText.text = Mathf.RoundToInt(value) + "%";
+    }
+
+    public string GetPercentage(float value)
+    {
+        return percentageText.text = Mathf.RoundToInt(value) + "%";
     }
 }
