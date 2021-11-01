@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
+
 
 public class MapGenerator : MonoBehaviour
 {
@@ -12,8 +14,10 @@ public class MapGenerator : MonoBehaviour
     public string seed;
     public bool useRandomSeed;
 
-    [Range(0, 100)]
-    public int randomFillPercent;
+    ///[Range(0, 100)]
+    //public int randomFillPercent;
+    public Slider fillPercentSlider;
+    int randomFillPercent;
 
     int[,] map;
 
@@ -28,7 +32,14 @@ public class MapGenerator : MonoBehaviour
         //{
         //    GenerateMap();
         //}
+        //randomFillPercent = GetComponent<int>();
+
     }
+
+    //public void FillPercentSlider()
+    //{
+    //    randomFillPercent = ;
+    //}
 
     public void GenerateButtonClick()
     {
