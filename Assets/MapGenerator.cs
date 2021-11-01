@@ -10,14 +10,13 @@ using UnityEngine.UI;
 public class MapGenerator : MonoBehaviour
 {
 
-    public int width;
-    public int height;
+    int width;
+    int height;
 
-    public string seed;
-    public bool useRandomSeed;
+    string seed;
+    bool useRandomSeed;
 
-    //[Range(0, 100)]
-    //public int randomFillPercent;
+    public InputField seedInput;
     public Slider widthInput;
     public Slider heightInput;
     public Slider fillPercentSlider;
@@ -27,14 +26,19 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
-        //GenerateMap();
         fillPercentSlider = GameObject.Find("Slider Fill Percent").GetComponent<Slider>();
         widthInput = GameObject.Find("Slider Width").GetComponent<Slider>();
         heightInput = GameObject.Find("Slider Height").GetComponent<Slider>();
+        seedInput = GameObject.Find("Input Seed").GetComponent<InputField>();
     }
 
     void Update()
     {
+    }
+
+    public void ChangeSeed()
+    {
+        seed = seedInput.text;
     }
 
     public void ChangeFillPercent()
