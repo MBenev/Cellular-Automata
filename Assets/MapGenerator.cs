@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
-        GenerateMap();
+        //GenerateMap();
     }
 
     void Update()

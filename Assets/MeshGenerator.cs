@@ -24,6 +24,7 @@ public class MeshGenerator : MonoBehaviour
 		outlines.Clear();
 		checkedVertices.Clear();
 		triangleDictionary.Clear();
+		Destroy(walls.GetComponent<MeshCollider>());
 
 		squareGrid = new SquareGrid(map, squareSize);
 		vertices = new List<Vector3>();
