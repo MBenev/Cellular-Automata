@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized * 10;
-
     }
 
     private void FixedUpdate()
     {
         rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
     }
+
 }
