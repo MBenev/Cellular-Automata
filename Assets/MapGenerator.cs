@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
+//using UnityEditor;
 
 
 
@@ -17,8 +18,8 @@ public class MapGenerator : MonoBehaviour
 
     //[Range(0, 100)]
     //public int randomFillPercent;
-    public InputField widthInput;
-    public InputField heightInput;
+    public Slider widthInput;
+    public Slider heightInput;
     public Slider fillPercentSlider;
     int randomFillPercent;
 
@@ -28,8 +29,8 @@ public class MapGenerator : MonoBehaviour
     {
         //GenerateMap();
         fillPercentSlider = GameObject.Find("Slider Fill Percent").GetComponent<Slider>();
-        widthInput = GameObject.Find("Input Width").GetComponent<InputField>();
-        heightInput = GameObject.Find("Input Height").GetComponent<InputField>();
+        widthInput = GameObject.Find("Slider Width").GetComponent<Slider>();
+        heightInput = GameObject.Find("Slider Height").GetComponent<Slider>();
     }
 
     void Update()
@@ -43,12 +44,12 @@ public class MapGenerator : MonoBehaviour
 
     public void ChangeWidth()
     {
-        width = int.Parse(widthInput.text);
+        width = (int)widthInput.value;       
     }
 
     public void ChangeHeight()
     {
-        height = int.Parse(heightInput.text);
+        height = (int)heightInput.value;
     }
 
     public void GenerateButtonClick()
