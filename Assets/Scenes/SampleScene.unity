@@ -2680,14 +2680,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5e96e5ccdd348f46933c0b3a84b70b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1740536546}
   smoothSpeed: 0.125
-  offset: {x: 5, y: 5, z: 3}
+  offset: {x: 0.45, y: 20.59, z: -7.66}
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
