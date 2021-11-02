@@ -16,11 +16,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized * 10;
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
+        
     }
 
     private void FixedUpdate()
