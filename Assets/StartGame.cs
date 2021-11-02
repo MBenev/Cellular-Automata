@@ -20,6 +20,7 @@ public class StartGame : MonoBehaviour
                 script.enabled = false;
                 MainCamera.transform.position = cameraMenuPos;
                 MainCamera.transform.rotation = cameraMenuRot;
+                gameActive = false;
             }
             else
             {
