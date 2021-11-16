@@ -91,7 +91,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int y = 0; y < borderedMap.GetLength(1); y++)
             { 
-                // x value is inside of the map  (mine)
+                // x value is inside of the map  
                 if (x >= borderSize && x < width + borderSize && y >= borderSize && y < height + borderSize)
                 {
                     borderedMap[x, y] = map[x - borderSize, y - borderSize];
