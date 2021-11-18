@@ -27,11 +27,11 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
-        fillPercentSlider = GameObject.Find("Slider Fill Percent").GetComponent<Slider>();
-        widthInput = GameObject.Find("Slider Width").GetComponent<Slider>();
-        heightInput = GameObject.Find("Slider Height").GetComponent<Slider>();
-        seedInput = GameObject.Find("Input Seed").GetComponent<InputField>();
-        randomSeedInput = GameObject.Find("Input Random Seed").GetComponent<Toggle>();
+        //fillPercentSlider = GameObject.Find("Slider Fill Percent").GetComponent<Slider>();
+        //widthInput = GameObject.Find("Slider Width").GetComponent<Slider>();
+        //heightInput = GameObject.Find("Slider Height").GetComponent<Slider>();
+        //seedInput = GameObject.Find("Input Seed").GetComponent<InputField>();
+        //randomSeedInput = GameObject.Find("Input Random Seed").GetComponent<Toggle>();
     }
 
     void Update()
@@ -55,6 +55,7 @@ public class MapGenerator : MonoBehaviour
     public void ChangeFillPercent()
     {
         randomFillPercent = (int)fillPercentSlider.value;
+        Debug.Log(randomFillPercent);
     }
 
     public void ChangeWidth()
@@ -65,6 +66,7 @@ public class MapGenerator : MonoBehaviour
     public void ChangeHeight()
     {
         height = (int)heightInput.value;
+        Debug.Log(height);
     }
 
     public void GenerateButtonClick()
