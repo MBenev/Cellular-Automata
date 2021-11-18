@@ -55,7 +55,7 @@ public class MapGenerator : MonoBehaviour
     public void ChangeFillPercent()
     {
         randomFillPercent = (int)fillPercentSlider.value;
-        Debug.Log(randomFillPercent);
+        //Debug.Log(randomFillPercent);
     }
 
     public void ChangeWidth()
@@ -66,7 +66,7 @@ public class MapGenerator : MonoBehaviour
     public void ChangeHeight()
     {
         height = (int)heightInput.value;
-        Debug.Log(height);
+        //Debug.Log(height);
     }
 
     public void GenerateButtonClick()

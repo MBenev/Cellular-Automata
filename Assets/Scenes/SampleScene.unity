@@ -791,8 +791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce8410b6d12e864a89a86c57ba79247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedInput: {fileID: 0}
-  randomSeedInput: {fileID: 0}
+  seedInput: {fileID: 2005796747}
+  randomSeedInput: {fileID: 569228284}
   widthInput: {fileID: 1005138032}
   heightInput: {fileID: 2053564925}
   fillPercentSlider: {fileID: 529089330}
@@ -1281,6 +1281,18 @@ MonoBehaviour:
       - m_Target: {fileID: 366387291}
         m_TargetAssemblyTypeName: MapGenerator, Assembly-CSharp
         m_MethodName: RandomSeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1841782260}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
