@@ -72,6 +72,42 @@ public class MapGenerator : MonoBehaviour
     public void GenerateButtonClick()
     {
         GenerateMap();
+
+        //List<List<Coord>> roomRegions = GetRegions(0);
+        //foreach (List<Coord> roomRegion in roomRegions)
+        //{
+        //    foreach (Coord tile in roomRegion)
+        //    {
+        //        //Debug.Log("aa");
+        //        Debug.Log(tile);
+        //        Vector3 vec = new Vector3(1.0f,1.0f,1.0f);
+        //        Debug.DrawLine(CoordToWorldPoint(tile), vec,Color.red);
+        //    }
+        //}
+
+        //List<List<Coord>> roomCentres = GetRegions(0);
+        //Vector3 vec = new Vector3(1.0f, 20.0f, 1.0f);
+        //for (int i = 0; i < roomCentres.Count; i++)
+        //{
+        //    Debug.DrawLine(CoordToWorldPoint(roomCentres[i][i]), vec, Color.red);
+        //}
+
+        List<List<Coord>> roomRegions = GetRegions(0);
+        //int roomThresholdSize = 50; // if region is under 50 empty tiles remove it
+        List<Room> survivingRooms = new List<Room>();
+        int i = 0;
+        foreach (List<Coord> roomRegion in roomRegions)
+        {
+            foreach (Coord tile in roomRegion)
+            {
+                if(map[tile.tileX, tile.tileY] == 0)
+                {
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    cube.transform.position = CoordToWorldPoint(roomRegion[i]);
+                }
+                i++;
+            }
+        }
     }
 
     void GenerateMap()
