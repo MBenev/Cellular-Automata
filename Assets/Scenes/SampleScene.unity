@@ -796,6 +796,7 @@ MonoBehaviour:
   widthInput: {fileID: 1005138032}
   heightInput: {fileID: 2053564925}
   fillPercentSlider: {fileID: 529089330}
+  oldCube: {fileID: 0}
 --- !u!4 &366387292
 Transform:
   m_ObjectHideFlags: 0
@@ -1836,7 +1837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1740536546}
   smoothSpeed: 0.125
-  offset: {x: 0.45, y: 20.59, z: -7.66}
+  offset: {x: 0.45, y: 50, z: -7.66}
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0

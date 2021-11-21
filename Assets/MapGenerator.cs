@@ -77,19 +77,7 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateButtonClick()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            oldCube = GameObject.Find("Cube " + i);
-            Destroy(oldCube);
-        }
-
-        //oldCube = GameObject.Find("Cube 0");
-        //Destroy(oldCube);
-        //oldCube = GameObject.Find("Cube 1");
-        //Destroy(oldCube);
-        //oldCube = GameObject.Find("Cube 2");
-        //Destroy(oldCube);
-
+        DestroyCubes();
         GenerateMap();
         SpawnCubes();
     }
@@ -127,6 +115,15 @@ public class MapGenerator : MonoBehaviour
 
         MeshGenerator meshGen = GetComponent<MeshGenerator>();
         meshGen.GenerateMesh(borderedMap, 1);
+    }
+
+    void DestroyCubes()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            oldCube = GameObject.Find("Cube " + i);
+            Destroy(oldCube);
+        }
     }
 
     void SpawnCubes()
