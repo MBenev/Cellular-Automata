@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine.UI;
 //using UnityEditor;
 
@@ -25,6 +26,9 @@ public class MapGenerator : MonoBehaviour
 
     int[,] map;
 
+    //private static System.Random rng = new System.Random();
+
+
     void Start()
     {
         //fillPercentSlider = GameObject.Find("Slider Fill Percent").GetComponent<Slider>();
@@ -37,6 +41,9 @@ public class MapGenerator : MonoBehaviour
     void Update()
     {
     }
+
+
+
 
     public void RandomSeed(bool selected)
     {
@@ -72,42 +79,9 @@ public class MapGenerator : MonoBehaviour
     public void GenerateButtonClick()
     {
         GenerateMap();
+        SpawnCubes();
 
-        //List<List<Coord>> roomRegions = GetRegions(0);
-        //foreach (List<Coord> roomRegion in roomRegions)
-        //{
-        //    foreach (Coord tile in roomRegion)
-        //    {
-        //        //Debug.Log("aa");
-        //        Debug.Log(tile);
-        //        Vector3 vec = new Vector3(1.0f,1.0f,1.0f);
-        //        Debug.DrawLine(CoordToWorldPoint(tile), vec,Color.red);
-        //    }
-        //}
 
-        //List<List<Coord>> roomCentres = GetRegions(0);
-        //Vector3 vec = new Vector3(1.0f, 20.0f, 1.0f);
-        //for (int i = 0; i < roomCentres.Count; i++)
-        //{
-        //    Debug.DrawLine(CoordToWorldPoint(roomCentres[i][i]), vec, Color.red);
-        //}
-
-        List<List<Coord>> roomRegions = GetRegions(0);
-        //int roomThresholdSize = 50; // if region is under 50 empty tiles remove it
-        List<Room> survivingRooms = new List<Room>();
-        int i = 0;
-        foreach (List<Coord> roomRegion in roomRegions)
-        {
-            foreach (Coord tile in roomRegion)
-            {
-                if(map[tile.tileX, tile.tileY] == 0)
-                {
-                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    cube.transform.position = CoordToWorldPoint(roomRegion[i]);
-                }
-                i++;
-            }
-        }
     }
 
     void GenerateMap()
@@ -143,6 +117,30 @@ public class MapGenerator : MonoBehaviour
 
         MeshGenerator meshGen = GetComponent<MeshGenerator>();
         meshGen.GenerateMesh(borderedMap, 1);
+    }
+
+    void SpawnCubes()
+    {
+        List<List<Coord>> roomRegions = GetRegions(0);
+        var rnd = new System.Random();
+
+        List<int> randomNumbers = new List<int>();
+        foreach (List<Coord> roomRegion in roomRegions)
+        {
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            for (int j = 0; j < 3; j++)
+            {
+                //Debug.Log((randomNumbers[j]));
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+                cube.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[j]]);
+                Vector3 currentPositiong = new Vector3(cube.transform.position.x, -5, cube.transform.position.z);
+                cube.transform.position = currentPositiong;
+
+            }
+        }
     }
 
     void ProcessMap()
