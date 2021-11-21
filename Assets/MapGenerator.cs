@@ -26,8 +26,7 @@ public class MapGenerator : MonoBehaviour
 
     int[,] map;
 
-    //private static System.Random rng = new System.Random();
-
+    public GameObject oldCube;
 
     void Start()
     {
@@ -78,10 +77,21 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateButtonClick()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            oldCube = GameObject.Find("Cube " + i);
+            Destroy(oldCube);
+        }
+
+        //oldCube = GameObject.Find("Cube 0");
+        //Destroy(oldCube);
+        //oldCube = GameObject.Find("Cube 1");
+        //Destroy(oldCube);
+        //oldCube = GameObject.Find("Cube 2");
+        //Destroy(oldCube);
+
         GenerateMap();
         SpawnCubes();
-
-
     }
 
     void GenerateMap()
@@ -138,7 +148,7 @@ public class MapGenerator : MonoBehaviour
                 cube.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[j]]);
                 Vector3 currentPositiong = new Vector3(cube.transform.position.x, -5, cube.transform.position.z);
                 cube.transform.position = currentPositiong;
-
+                cube.name = "Cube " + j;
             }
         }
     }
