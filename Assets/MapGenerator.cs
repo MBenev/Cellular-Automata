@@ -27,6 +27,7 @@ public class MapGenerator : MonoBehaviour
     int[,] map;
 
     public GameObject oldCube;
+    public Transform prefab;
 
     void Start()
     {
@@ -140,12 +141,18 @@ public class MapGenerator : MonoBehaviour
             for (int j = 0; j < 3; j++)
             {
                 //Debug.Log((randomNumbers[j]));
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
-                cube.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[j]]);
-                Vector3 currentPositiong = new Vector3(cube.transform.position.x, -5, cube.transform.position.z);
-                cube.transform.position = currentPositiong;
-                cube.name = "Cube " + j;
+                //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                //cube.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+                //cube.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[j]]);
+                //Vector3 currentPositiong = new Vector3(cube.transform.position.x, -5, cube.transform.position.z);
+                //cube.transform.position = currentPositiong;
+                //cube.name = "Cube " + j;
+
+                var newPrefab = Instantiate(prefab, CoordToWorldPoint(roomRegion[randomNumbers[j]]), Quaternion.identity);
+                newPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+                Vector3 currentPositiong = new Vector3(newPrefab.transform.position.x, -5, newPrefab.transform.position.z);
+                newPrefab.transform.position = currentPositiong;
+                newPrefab.name = "Cube " + j;
             }
         }
     }

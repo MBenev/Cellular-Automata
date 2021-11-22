@@ -797,6 +797,7 @@ MonoBehaviour:
   heightInput: {fileID: 2053564925}
   fillPercentSlider: {fileID: 529089330}
   oldCube: {fileID: 0}
+  prefab: {fileID: 1327080439744732186, guid: 4a87dfc389a4bed47bdcfd067c05cce5, type: 3}
 --- !u!4 &366387292
 Transform:
   m_ObjectHideFlags: 0
