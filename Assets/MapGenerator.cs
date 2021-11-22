@@ -26,16 +26,14 @@ public class MapGenerator : MonoBehaviour
 
     int[,] map;
 
-    public GameObject oldCube;
-    public Transform prefab;
+    private GameObject oldCube;
+    private GameObject oldDoor;
+    public Transform prefabCollectible;
+    public Transform prefabDoor;
 
     void Start()
     {
-        //fillPercentSlider = GameObject.Find("Slider Fill Percent").GetComponent<Slider>();
-        //widthInput = GameObject.Find("Slider Width").GetComponent<Slider>();
-        //heightInput = GameObject.Find("Slider Height").GetComponent<Slider>();
-        //seedInput = GameObject.Find("Input Seed").GetComponent<InputField>();
-        //randomSeedInput = GameObject.Find("Input Random Seed").GetComponent<Toggle>();
+
     }
 
     void Update()
@@ -62,7 +60,6 @@ public class MapGenerator : MonoBehaviour
     public void ChangeFillPercent()
     {
         randomFillPercent = (int)fillPercentSlider.value;
-        //Debug.Log(randomFillPercent);
     }
 
     public void ChangeWidth()
@@ -73,14 +70,20 @@ public class MapGenerator : MonoBehaviour
     public void ChangeHeight()
     {
         height = (int)heightInput.value;
-        //Debug.Log(height);
     }
 
     public void GenerateButtonClick()
     {
         DestroyCubes();
+        DestoryDoor();
         GenerateMap();
-        SpawnCubes();
+        SpawnCollectiblesAndDoor();
+    }
+
+    private void DestoryDoor()
+    {
+        oldDoor = GameObject.Find("Door");
+        Destroy(oldDoor);
     }
 
     void GenerateMap()
@@ -127,7 +130,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    void SpawnCubes()
+    void SpawnCollectiblesAndDoor()
     {
         List<List<Coord>> roomRegions = GetRegions(0);
         var rnd = new System.Random();
@@ -138,24 +141,23 @@ public class MapGenerator : MonoBehaviour
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             for (int j = 0; j < 3; j++)
             {
-                //Debug.Log((randomNumbers[j]));
-                //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                //cube.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
-                //cube.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[j]]);
-                //Vector3 currentPositiong = new Vector3(cube.transform.position.x, -5, cube.transform.position.z);
-                //cube.transform.position = currentPositiong;
-                //cube.name = "Cube " + j;
-
-                var newPrefab = Instantiate(prefab, CoordToWorldPoint(roomRegion[randomNumbers[j]]), Quaternion.identity);
+                var newPrefab = Instantiate(prefabCollectible, CoordToWorldPoint(roomRegion[randomNumbers[j]]), Quaternion.identity);
                 newPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
                 Vector3 currentPositiong = new Vector3(newPrefab.transform.position.x, -5, newPrefab.transform.position.z);
                 newPrefab.transform.position = currentPositiong;
-                newPrefab.name = "Cube " + j;
+                newPrefab.name = "Cube " + j;            
             }
+            var doorPrefab = Instantiate(prefabDoor, CoordToWorldPoint(roomRegion[randomNumbers[3]]), Quaternion.identity);
+            doorPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
+            Vector3 currentPositionDoor = new Vector3(doorPrefab.transform.position.x, -5, doorPrefab.transform.position.z);
+            doorPrefab.transform.position = currentPositionDoor;
+            doorPrefab.name = "Door";
         }
     }
+
 
     void ProcessMap()
     {

@@ -796,8 +796,8 @@ MonoBehaviour:
   widthInput: {fileID: 1005138032}
   heightInput: {fileID: 2053564925}
   fillPercentSlider: {fileID: 529089330}
-  oldCube: {fileID: 0}
-  prefab: {fileID: 1327080439744732186, guid: 4a87dfc389a4bed47bdcfd067c05cce5, type: 3}
+  prefabCollectible: {fileID: 1327080439744732186, guid: 4a87dfc389a4bed47bdcfd067c05cce5, type: 3}
+  prefabDoor: {fileID: 7383249191864462766, guid: 6498827cfbea9c344b01ece8fd81e8f7, type: 3}
 --- !u!4 &366387292
 Transform:
   m_ObjectHideFlags: 0
@@ -3527,6 +3527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cd69661a961314eaf5b486bb29118b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collected: 0
 --- !u!65 &1740536543
 BoxCollider:
   m_ObjectHideFlags: 0
