@@ -932,7 +932,7 @@ MonoBehaviour:
   fillPercentSlider: {fileID: 529089330}
   collectiblesText: {fileID: 203949101}
   prefabCollectible: {fileID: 4997397545812890, guid: cdc64358fb600b94c83082531a9b43af, type: 3}
-  prefabDoor: {fileID: 7383249191864462766, guid: 6498827cfbea9c344b01ece8fd81e8f7, type: 3}
+  prefabDoor: {fileID: 400000, guid: 2116aafc135bfb6439d391c4fb83f4cd, type: 3}
 --- !u!4 &366387292
 Transform:
   m_ObjectHideFlags: 0
