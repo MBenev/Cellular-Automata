@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,12 +20,7 @@ public class StartGame : MonoBehaviour
         {
             if (gameActive)
             {
-                script.enabled = false;
-                MainCamera.transform.position = cameraMenuPos;
-                MainCamera.transform.rotation = cameraMenuRot;
-                Panel.SetActive(true);
-                collectiblesText.SetActive(false);
-                gameActive = false;
+                GoBackToTool();                
             }
             else
             {
@@ -32,6 +28,16 @@ public class StartGame : MonoBehaviour
                 UnityEditor.EditorApplication.isPlaying = false;
             }
         }
+    }
+
+    public void GoBackToTool()
+    {
+        script.enabled = false;
+        MainCamera.transform.position = cameraMenuPos;
+        MainCamera.transform.rotation = cameraMenuRot;
+        Panel.SetActive(true);
+        collectiblesText.SetActive(false);
+        gameActive = false;
     }
 
     private void Start()
