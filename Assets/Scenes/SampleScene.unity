@@ -931,7 +931,7 @@ MonoBehaviour:
   heightInput: {fileID: 2053564925}
   fillPercentSlider: {fileID: 529089330}
   collectiblesText: {fileID: 203949101}
-  prefabCollectible: {fileID: 1327080439744732186, guid: 4a87dfc389a4bed47bdcfd067c05cce5, type: 3}
+  prefabCollectible: {fileID: 4997397545812890, guid: cdc64358fb600b94c83082531a9b43af, type: 3}
   prefabDoor: {fileID: 7383249191864462766, guid: 6498827cfbea9c344b01ece8fd81e8f7, type: 3}
 --- !u!4 &366387292
 Transform:
@@ -1973,7 +1973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1740536546}
   smoothSpeed: 0.125
-  offset: {x: 0.45, y: 50, z: -7.66}
+  offset: {x: 0.45, y: 40, z: -5}
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0

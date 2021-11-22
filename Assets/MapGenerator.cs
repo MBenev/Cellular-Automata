@@ -179,7 +179,7 @@ public class MapGenerator : MonoBehaviour
             for (int j = 0; j < 3; j++)
             {
                 var newPrefab = Instantiate(prefabCollectible, CoordToWorldPoint(roomRegion[randomNumbers[j]]), Quaternion.identity);
-                newPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+                //newPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
                 Vector3 currentPositiong = new Vector3(newPrefab.transform.position.x, -5, newPrefab.transform.position.z);
                 newPrefab.transform.position = currentPositiong;
                 newPrefab.name = "Cube " + j;            
