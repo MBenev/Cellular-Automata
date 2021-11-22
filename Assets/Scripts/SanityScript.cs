@@ -19,4 +19,10 @@ public class SanityScript : MonoBehaviour
     {
         sanityMeter.fillAmount = sanity / maxSanity;
     }
+
+    public void SetMax()
+    {
+        sanity = 100f;
+        Player.Instance.EquipTorch();
+    }
 }

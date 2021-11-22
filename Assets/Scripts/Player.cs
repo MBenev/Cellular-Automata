@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI text;
     public float sanity, maxSanity;
     public GameObject torch;
-    //public SanityMeter sanityBar;
+    public GameObject panel;
     bool equipped = true;
     public static Player Instance
     {
@@ -36,12 +36,12 @@ public class Player : MonoBehaviour
 
     public void LowerSanity()
     {
-        SanityScript.sanity -= 10f;
+        SanityScript.sanity -= 0.05f;
     }
 
     public void IncreaseSanity()
     {
-        SanityScript.sanity += 10f;
+        SanityScript.sanity += 0.05f;
     }
 
     public void AddCollected()
@@ -66,6 +66,12 @@ public class Player : MonoBehaviour
 
     }
 
+    public void EquipTorch()
+    {
+        torch.SetActive(true);
+        equipped = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -76,11 +82,11 @@ public class Player : MonoBehaviour
         {
             text.text = "Door is now open!";
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (!equipped && panel.active == false)
         {
             LowerSanity();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (equipped && panel.active == false)
         {
             IncreaseSanity();
         }
