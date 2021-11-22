@@ -81,7 +81,7 @@ public class MapGenerator : MonoBehaviour
         DestroyCubes();
         DestoryDoor();
         GenerateMap();
-        SpawnCollectiblesAndDoor();
+        SpawnObjects();
         ClearCollectiblesText();
     }
 
@@ -143,7 +143,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    void SpawnCollectiblesAndDoor()
+    void SpawnObjects()
     {
         List<List<Coord>> roomRegions = GetRegions(0);
         var rnd = new System.Random();
@@ -151,10 +151,31 @@ public class MapGenerator : MonoBehaviour
         List<int> randomNumbers = new List<int>();
         foreach (List<Coord> roomRegion in roomRegions)
         {
+            // Get random open spaces
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+
+            // Check for duplicates and get new numbers until there are no duplicates
+            var HasDuplicates = (randomNumbers.Distinct().Count() < randomNumbers.Count);
+            while (HasDuplicates)
+            {
+                //Debug.Log("same");
+                randomNumbers.Clear();
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+
+                HasDuplicates = (randomNumbers.Distinct().Count() < randomNumbers.Count);
+            }
+
+            //Debug.Log(HasDuplicates);
+
+            // Generate 3 collectible objects in open spaces
             for (int j = 0; j < 3; j++)
             {
                 var newPrefab = Instantiate(prefabCollectible, CoordToWorldPoint(roomRegion[randomNumbers[j]]), Quaternion.identity);
@@ -163,19 +184,16 @@ public class MapGenerator : MonoBehaviour
                 newPrefab.transform.position = currentPositiong;
                 newPrefab.name = "Cube " + j;            
             }
+
+            // Generate the door in an open space
             var doorPrefab = Instantiate(prefabDoor, CoordToWorldPoint(roomRegion[randomNumbers[3]]), Quaternion.identity);
             doorPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
             Vector3 currentPositionDoor = new Vector3(doorPrefab.transform.position.x, -5, doorPrefab.transform.position.z);
             doorPrefab.transform.position = currentPositionDoor;
             doorPrefab.name = "Door";
 
-            //var fencePrefab = Instantiate(prefabFence, CoordToWorldPoint(roomRegion[randomNumbers[3]]), Quaternion.identity);
-            //fencePrefab.GetComponent<Renderer>().material.color = new Color(255, 255, 255);
-            //Vector3 currentPositionFence = new Vector3(doorPrefab.transform.position.x, -5.5f, fencePrefab.transform.position.z);
-            //fencePrefab.transform.position = currentPositionFence;
-            //var scaleChange = new Vector3(2.0f, 1.0f, 2.0f);
-            //fencePrefab.transform.localScale += scaleChange;
-            //fencePrefab.name = "Fence";
+            // Move player to an open space
+            Player.Instance.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[4]]);
         }
     }
 
