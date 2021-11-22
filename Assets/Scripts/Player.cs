@@ -10,8 +10,9 @@ public class Player : MonoBehaviour
     private static Player _instance;
     public TextMeshProUGUI text;
     public float sanity, maxSanity;
+    public GameObject torch;
     //public SanityMeter sanityBar;
-
+    bool equipped = true;
     public static Player Instance
     {
         get
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -81,6 +83,19 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             IncreaseSanity();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (equipped)
+            {
+                torch.SetActive(false);
+                equipped = false;
+            }
+            else if (!equipped)
+            {
+                torch.SetActive(true);
+                equipped = true;
+            }
         }
     }
 
