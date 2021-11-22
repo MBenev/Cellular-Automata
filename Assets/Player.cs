@@ -5,8 +5,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private static Player _instance;
+    public static Player Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                Debug.LogError("Player is null");
+            }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        _instance = this;
+    }
+
     Rigidbody rigidBody;
     Vector3 velocity;
+    [SerializeField] private int collected;
+
+    public void AddCollected()
+    {
+        collected++;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {

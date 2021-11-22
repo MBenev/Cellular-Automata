@@ -8,7 +8,8 @@ public class Collectible : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            Debug.Log("aa");
+            //Debug.Log("aa");
+            Player.Instance.AddCollected();
             Destroy(this.gameObject);
         }
     }
