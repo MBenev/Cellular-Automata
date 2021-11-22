@@ -6,6 +6,7 @@ public class StartGame : MonoBehaviour
 {
     public GameObject MainCamera;
     public GameObject Panel;
+    public GameObject collectiblesText;
     CameraFollow script;
     public bool gameActive = false;
     Vector3 cameraMenuPos = new Vector3(787, 255, -436);
@@ -22,6 +23,7 @@ public class StartGame : MonoBehaviour
                 MainCamera.transform.position = cameraMenuPos;
                 MainCamera.transform.rotation = cameraMenuRot;
                 Panel.SetActive(true);
+                collectiblesText.SetActive(false);
                 gameActive = false;
             }
             else

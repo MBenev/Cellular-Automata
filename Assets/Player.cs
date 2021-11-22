@@ -2,10 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     private static Player _instance;
+    //public Text text;
+    public TextMeshProUGUI text;
+    //private float timeToAppear = 0.1f;
+    //private float timeWhenDisappear;
     public static Player Instance
     {
         get
@@ -31,6 +37,11 @@ public class Player : MonoBehaviour
     {
         collected++;
     }
+
+    public void ClearCollected()
+    {
+        collected = 0;
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -43,14 +54,14 @@ public class Player : MonoBehaviour
     {
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized * 10;
 
-        CheckForCollectible();
-        
+        //CheckForCollectible();
+        if (collected == 3)
+        {
+            text.text = "Door is now open!";
+        }
+
     }
 
-    private void CheckForCollectible()
-    {
-        
-    }
 
     private void FixedUpdate()
     {

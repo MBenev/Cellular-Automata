@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro;
 //using UnityEditor;
 
 
@@ -22,14 +23,17 @@ public class MapGenerator : MonoBehaviour
     public Slider widthInput;
     public Slider heightInput;
     public Slider fillPercentSlider;
+    public TextMeshProUGUI collectiblesText;
     int randomFillPercent;
 
     int[,] map;
 
     private GameObject oldCube;
     private GameObject oldDoor;
+    //private GameObject oldFence;
     public Transform prefabCollectible;
     public Transform prefabDoor;
+    //public Transform prefabFence;
 
     void Start()
     {
@@ -78,12 +82,21 @@ public class MapGenerator : MonoBehaviour
         DestoryDoor();
         GenerateMap();
         SpawnCollectiblesAndDoor();
+        ClearCollectiblesText();
+    }
+
+    private void ClearCollectiblesText()
+    {
+        Player.Instance.ClearCollected();
+        collectiblesText.text = "Door locked.";
     }
 
     private void DestoryDoor()
     {
         oldDoor = GameObject.Find("Door");
         Destroy(oldDoor);
+        //oldFence = GameObject.Find("Fence");
+        //Destroy(oldFence);
     }
 
     void GenerateMap()
@@ -155,6 +168,14 @@ public class MapGenerator : MonoBehaviour
             Vector3 currentPositionDoor = new Vector3(doorPrefab.transform.position.x, -5, doorPrefab.transform.position.z);
             doorPrefab.transform.position = currentPositionDoor;
             doorPrefab.name = "Door";
+
+            //var fencePrefab = Instantiate(prefabFence, CoordToWorldPoint(roomRegion[randomNumbers[3]]), Quaternion.identity);
+            //fencePrefab.GetComponent<Renderer>().material.color = new Color(255, 255, 255);
+            //Vector3 currentPositionFence = new Vector3(doorPrefab.transform.position.x, -5.5f, fencePrefab.transform.position.z);
+            //fencePrefab.transform.position = currentPositionFence;
+            //var scaleChange = new Vector3(2.0f, 1.0f, 2.0f);
+            //fencePrefab.transform.localScale += scaleChange;
+            //fencePrefab.name = "Fence";
         }
     }
 
