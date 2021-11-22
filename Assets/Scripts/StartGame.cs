@@ -8,6 +8,7 @@ public class StartGame : MonoBehaviour
     public GameObject MainCamera;
     public GameObject Panel;
     public GameObject collectiblesText;
+    public GameObject sanityMeter;
     CameraFollow script;
     public bool gameActive = false;
     Vector3 cameraMenuPos = new Vector3(787, 255, -436);
@@ -37,6 +38,7 @@ public class StartGame : MonoBehaviour
         MainCamera.transform.rotation = cameraMenuRot;
         Panel.SetActive(true);
         collectiblesText.SetActive(false);
+        sanityMeter.SetActive(false);
         gameActive = false;
     }
 

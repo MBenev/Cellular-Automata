@@ -8,10 +8,10 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     private static Player _instance;
-    //public Text text;
     public TextMeshProUGUI text;
-    //private float timeToAppear = 0.1f;
-    //private float timeWhenDisappear;
+    public float sanity, maxSanity;
+    //public SanityMeter sanityBar;
+
     public static Player Instance
     {
         get
@@ -32,6 +32,16 @@ public class Player : MonoBehaviour
     Rigidbody rigidBody;
     Vector3 velocity;
     [SerializeField] private int collected;
+
+    public void LowerSanity()
+    {
+        SanityScript.sanity -= 10f;
+    }
+
+    public void IncreaseSanity()
+    {
+        SanityScript.sanity += 10f;
+    }
 
     public void AddCollected()
     {
@@ -64,7 +74,14 @@ public class Player : MonoBehaviour
         {
             text.text = "Door is now open!";
         }
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            LowerSanity();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            IncreaseSanity();
+        }
     }
 
 
