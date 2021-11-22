@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
         collected = 0;
     }
     
+    public int GetCollectiblesAmount()
+    {
+        return collected;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
