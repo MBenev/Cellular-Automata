@@ -25,4 +25,16 @@ public class SanityScript : MonoBehaviour
         sanity = 100f;
         Player.Instance.EquipTorch();
     }
+
+    private void FixedUpdate()
+    {
+        if (sanity < 50f)
+        {
+            sanityMeter.GetComponent<Image>().color = new Color(139, 0, 0);
+        }
+        else if(sanity > 50f)
+        {
+            sanityMeter.GetComponent<Image>().color = new Color(161, 161, 161);
+        }
+    }
 }
