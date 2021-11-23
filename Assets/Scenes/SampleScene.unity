@@ -3558,6 +3558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192c3f0bd33d6f64db4a441c46e42e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventButton: {fileID: 773247073}
 --- !u!1 &1502593281
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,6 +4185,7 @@ MonoBehaviour:
   maxSanity: 0
   torch: {fileID: 1062075174}
   panel: {fileID: 1027831138}
+  eventButton: {fileID: 773247073}
   collected: 0
 --- !u!65 &1740536543
 BoxCollider:

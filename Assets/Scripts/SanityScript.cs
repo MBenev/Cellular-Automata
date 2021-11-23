@@ -8,6 +8,7 @@ public class SanityScript : MonoBehaviour
     Image sanityMeter;
     float maxSanity = 100f;
     public static float sanity;
+    public GameObject eventButton;
 
     private void Start()
     {
@@ -28,11 +29,15 @@ public class SanityScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (sanity < 50f)
+        if(eventButton.active == false)
         {
-            sanityMeter.GetComponent<Image>().color = new Color(139, 0, 0);
+            if (sanity < 50f)
+            {
+                sanityMeter.GetComponent<Image>().color = new Color(139, 0, 0);
+                eventButton.SetActive(true);
+            }
         }
-        else if(sanity > 50f)
+        if(sanity > 50f)
         {
             sanityMeter.GetComponent<Image>().color = new Color(161, 161, 161);
         }

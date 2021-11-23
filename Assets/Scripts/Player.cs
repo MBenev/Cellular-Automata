@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public float sanity, maxSanity;
     public GameObject torch;
     public GameObject panel;
+    public GameObject eventButton;
+
     bool equipped = true;
     public static Player Instance
     {
@@ -36,7 +38,10 @@ public class Player : MonoBehaviour
 
     public void LowerSanity()
     {
-        SanityScript.sanity -= 0.05f;
+        if(eventButton.active == false)
+        {
+            SanityScript.sanity -= 0.05f;
+        }
     }
 
     public void IncreaseSanity()
