@@ -1818,6 +1818,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1483150699}
+        m_TargetAssemblyTypeName: SanityScript, Assembly-CSharp
+        m_MethodName: EnableTimeScript
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &773247076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3559,6 +3571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventButton: {fileID: 773247073}
+  player: {fileID: 1740536540}
 --- !u!1 &1502593281
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,6 +4158,7 @@ GameObject:
   - component: {fileID: 1740536542}
   - component: {fileID: 1740536541}
   - component: {fileID: 1740536547}
+  - component: {fileID: 1740536548}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4282,6 +4296,19 @@ MonoBehaviour:
   collectiblesText: {fileID: 203949099}
   sanityMeter: {fileID: 496721856}
   gameActive: 0
+--- !u!114 &1740536548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740536540}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befd2287274895147863c52fcafae568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanityMeter: {fileID: 1483150695}
 --- !u!1 &1791697591
 GameObject:
   m_ObjectHideFlags: 0
