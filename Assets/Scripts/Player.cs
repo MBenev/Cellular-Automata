@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public GameObject eventButton;
     public int invertedControls = 1;
     bool equipped = true;
+    public bool isInLight;
+    //float range;
     public static Player Instance
     {
         get
@@ -31,6 +33,11 @@ public class Player : MonoBehaviour
     {
         _instance = this;
     }
+
+    //void IsLighted()
+    //{
+    //    isInLight = true;
+    //}
 
     Rigidbody rigidBody;
     Vector3 velocity;
@@ -68,7 +75,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-
+        //range = this.li
     }
 
     public void EquipTorch()
