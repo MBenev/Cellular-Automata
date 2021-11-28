@@ -22,7 +22,7 @@ public class WaitTime : MonoBehaviour
     IEnumerator Example()
     {
         yield return new WaitForSecondsRealtime(5);
-        Debug.Log("time passed");
+        //Debug.Log("time passed");
         sanityMeter.GetComponent<SanityScript>().AfterTimePasses();
     }
 }

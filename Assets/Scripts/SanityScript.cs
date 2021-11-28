@@ -12,6 +12,7 @@ public class SanityScript : MonoBehaviour
     public GameObject eventButton;
     WaitTime waitTimeScript;
     public GameObject player;
+    public GameObject light;
     bool happenedInTheLast5Seconds = false;
 
     private void Start()
@@ -64,10 +65,28 @@ public class SanityScript : MonoBehaviour
     {
         if(!happenedInTheLast5Seconds)
         {
-            Debug.Log("After 5 second is false");
-            eventButton.SetActive(true);
-            happenedInTheLast5Seconds = true;            
-        }
+            //Debug.Log("After 5 second is false");            
+            happenedInTheLast5Seconds = true;
 
+            var rng = new System.Random();
+            int randomEventNumber = rng.Next(0, 3);
+            switch(randomEventNumber)
+            {
+                case 0:
+                    Debug.Log("case 0");
+                    //EnableTimeScript();
+                    eventButton.SetActive(true);
+                    break;
+                case 1:
+                    Debug.Log("case 1");
+                    light.SetActive(false);
+                    EnableTimeScript();
+                    break;
+                case 2:
+                    Debug.Log("case 2");
+                    EnableTimeScript();
+                    break;
+            }
+        }
     }
 }
