@@ -94,11 +94,11 @@ public class Player : MonoBehaviour
         {
             text.text = "Door is now open!";
         }
-        if (!equipped && panel.active == false)
+        if (!isInLight && panel.active == false)
         {
             LowerSanity();
         }
-        if (equipped && panel.active == false)
+        if (isInLight && panel.active == false)
         {
             IncreaseSanity();
         }

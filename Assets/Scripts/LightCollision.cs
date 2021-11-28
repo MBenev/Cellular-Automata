@@ -9,15 +9,6 @@ public class LightCollision : MonoBehaviour
     {
         
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.collider.tag == "Player")
-    //    {
-    //        Player.Instance.isInLight = true;
-    //        Debug.Log("lighted");
-    //    }
-    //}
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,14 +28,6 @@ public class LightCollision : MonoBehaviour
         }
     }
 
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.collider.tag == "Player")
-    //    {
-    //        Player.Instance.isInLight = false;
-    //        Debug.Log("darkness");
-    //    }
-    //}
     // Update is called once per frame
     void Update()
     {
