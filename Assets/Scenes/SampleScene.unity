@@ -1818,6 +1818,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1483150699}
+        m_TargetAssemblyTypeName: SanityScript, Assembly-CSharp
+        m_MethodName: EnableTimeScript
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &773247076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3560,6 +3572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventButton: {fileID: 773247073}
   player: {fileID: 1740536540}
+  light: {fileID: 1502593281}
 --- !u!1 &1502593281
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,6 +4310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sanityMeter: {fileID: 1483150695}
+  light: {fileID: 1502593281}
 --- !u!1 &1791697591
 GameObject:
   m_ObjectHideFlags: 0

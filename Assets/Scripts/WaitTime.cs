@@ -5,6 +5,8 @@ using UnityEngine;
 public class WaitTime : MonoBehaviour
 {
     public GameObject sanityMeter;
+    public GameObject light;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +26,7 @@ public class WaitTime : MonoBehaviour
         yield return new WaitForSecondsRealtime(5);
         //Debug.Log("time passed");
         sanityMeter.GetComponent<SanityScript>().AfterTimePasses();
+        if(light.active == false)
+            light.SetActive(true);
     }
 }
