@@ -84,6 +84,7 @@ public class SanityScript : MonoBehaviour
                     break;
                 case 2:
                     Debug.Log("case 2");
+                    Player.Instance.invertedControls = -1;
                     EnableTimeScript();
                     break;
             }

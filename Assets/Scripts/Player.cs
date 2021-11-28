@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public GameObject torch;
     public GameObject panel;
     public GameObject eventButton;
-
+    public int invertedControls = 1;
     bool equipped = true;
     public static Player Instance
     {
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
+        rigidBody.MovePosition(rigidBody.position + velocity * invertedControls * Time.fixedDeltaTime);
     }
 
 }

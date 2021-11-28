@@ -28,5 +28,7 @@ public class WaitTime : MonoBehaviour
         sanityMeter.GetComponent<SanityScript>().AfterTimePasses();
         if(light.active == false)
             light.SetActive(true);
+        if (Player.Instance.invertedControls == -1)
+            Player.Instance.invertedControls = 1;
     }
 }
