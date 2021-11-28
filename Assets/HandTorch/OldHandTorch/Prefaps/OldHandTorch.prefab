@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7003655236470751458}
   - component: {fileID: 6995254199807741296}
   - component: {fileID: 131799390}
-  - component: {fileID: 131799391}
+  - component: {fileID: 2564746437533134591}
   m_Layer: 0
   m_Name: OldHandTorch
   m_TagString: Untagged
@@ -186,12 +186,12 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7007653479277445092}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.6
+  m_Radius: 2
   m_Center: {x: 0.000000024214385, y: 0.19340254, z: -0.000000044703484}
---- !u!114 &131799391
+--- !u!114 &2564746437533134591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

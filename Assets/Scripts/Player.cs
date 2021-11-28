@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     public GameObject panel;
     public GameObject eventButton;
     public int invertedControls = 1;
-    bool equipped = true;
+    public bool equipped = true;
     public bool isInLight;
-    //float range;
+
     public static Player Instance
     {
         get
@@ -94,11 +94,19 @@ public class Player : MonoBehaviour
         {
             text.text = "Door is now open!";
         }
-        if (!isInLight && panel.active == false)
+        if ((!isInLight && !equipped) && panel.active == false)
         {
             LowerSanity();
         }
-        if (isInLight && panel.active == false)
+        //if(equipped && panel.active == false)
+        //{
+        //    IncreaseSanity();
+        //}
+        //if(equipped && panel.active == false)
+        //{
+        //    LowerSanity();
+        //}
+        if ((isInLight || equipped) && panel.active == false)
         {
             IncreaseSanity();
         }
