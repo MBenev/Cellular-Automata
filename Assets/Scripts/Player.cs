@@ -98,14 +98,6 @@ public class Player : MonoBehaviour
         {
             LowerSanity();
         }
-        //if(equipped && panel.active == false)
-        //{
-        //    IncreaseSanity();
-        //}
-        //if(equipped && panel.active == false)
-        //{
-        //    LowerSanity();
-        //}
         if ((isInLight || equipped) && panel.active == false)
         {
             IncreaseSanity();
