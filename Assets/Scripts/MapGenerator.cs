@@ -30,6 +30,7 @@ public class MapGenerator : MonoBehaviour
 
     private GameObject oldCube;
     private GameObject oldDoor;
+    private GameObject oldTorch;
     //private GameObject oldFence;
     public Transform prefabCollectible;
     public Transform prefabDoor;
@@ -81,9 +82,19 @@ public class MapGenerator : MonoBehaviour
     {
         DestroyCubes();
         DestoryDoor();
+        DestroyTorches();
         GenerateMap();
         SpawnObjects();
         ClearCollectiblesText();
+    }
+
+    private void DestroyTorches()
+    {
+        for (int i = 5; i < 8; i++)
+        {
+            oldTorch = GameObject.Find("Torch " + i);
+            Destroy(oldTorch);
+        }
     }
 
     private void ClearCollectiblesText()
