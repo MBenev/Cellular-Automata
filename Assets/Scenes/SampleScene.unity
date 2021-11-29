@@ -933,6 +933,7 @@ MonoBehaviour:
   collectiblesText: {fileID: 203949101}
   prefabCollectible: {fileID: 4997397545812890, guid: cdc64358fb600b94c83082531a9b43af, type: 3}
   prefabDoor: {fileID: 400000, guid: 2116aafc135bfb6439d391c4fb83f4cd, type: 3}
+  prefabTorch: {fileID: 7013795465368730450, guid: 4745d1d7800129342a1b23f92c31715a, type: 3}
 --- !u!4 &366387292
 Transform:
   m_ObjectHideFlags: 0

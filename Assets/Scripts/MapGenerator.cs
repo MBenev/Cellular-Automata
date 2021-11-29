@@ -33,6 +33,7 @@ public class MapGenerator : MonoBehaviour
     //private GameObject oldFence;
     public Transform prefabCollectible;
     public Transform prefabDoor;
+    public Transform prefabTorch;
     //public Transform prefabFence;
 
     void Start()
@@ -158,12 +159,19 @@ public class MapGenerator : MonoBehaviour
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
 
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+
             // Check for duplicates and get new numbers until there are no duplicates
             var HasDuplicates = (randomNumbers.Distinct().Count() < randomNumbers.Count);
             while (HasDuplicates)
             {
                 //Debug.Log("same");
                 randomNumbers.Clear();
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+                randomNumbers.Add(rnd.Next(0, roomRegion.Count));
                 randomNumbers.Add(rnd.Next(0, roomRegion.Count));
                 randomNumbers.Add(rnd.Next(0, roomRegion.Count));
                 randomNumbers.Add(rnd.Next(0, roomRegion.Count));
@@ -194,6 +202,17 @@ public class MapGenerator : MonoBehaviour
 
             // Move player to an open space
             Player.Instance.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[4]]);
+
+            // Generate 3 torches on the ground
+            for(int t = 5;t<8;t++)
+            {
+                var torchPrefab = Instantiate(prefabTorch, CoordToWorldPoint(roomRegion[randomNumbers[t]]), Quaternion.identity);
+                //torchPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
+                Vector3 currentPositionTorch = new Vector3(torchPrefab.transform.position.x, -5, torchPrefab.transform.position.z);
+                torchPrefab.transform.position = currentPositionTorch;
+                torchPrefab.name = "Torch " + t;
+            }
+
         }
     }
 
