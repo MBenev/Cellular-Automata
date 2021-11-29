@@ -87,7 +87,14 @@ public class MeshGenerator : MonoBehaviour
 				wallTriangles.Add(startIndex + 3); 
 				wallTriangles.Add(startIndex + 1); // top right (mine)
 				wallTriangles.Add(startIndex + 0); // top left (mine)
+
+
+				GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+				cube.transform.position = wallVertices[i];
 			}
+
+			
+
 		}
 		wallMesh.vertices = wallVertices.ToArray();
 		wallMesh.triangles = wallTriangles.ToArray();
