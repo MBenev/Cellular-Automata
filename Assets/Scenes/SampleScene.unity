@@ -966,6 +966,7 @@ MonoBehaviour:
   walls: {fileID: 1984553117}
   cave: {fileID: 1394598161}
   prefabTorch: {fileID: 7013795465368730450, guid: 4745d1d7800129342a1b23f92c31715a, type: 3}
+  wallForOtherScript: []
   is2D: 0
 --- !u!1 &428934616
 GameObject:
@@ -4953,7 +4954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
