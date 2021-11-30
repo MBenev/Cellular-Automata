@@ -11,6 +11,9 @@ public class MeshGenerator : MonoBehaviour
 	List<int> triangles;
 	public MeshFilter cave;
 
+	public Transform prefabTorch;
+	public List<Vector3> wallForOtherScript = new List<Vector3>();
+
 	public bool is2D;
 
 	Dictionary<int, List<Triangle>> triangleDictionary = new Dictionary<int, List<Triangle>>();
@@ -61,7 +64,17 @@ public class MeshGenerator : MonoBehaviour
 		}
 	}
 
-    void CreateWallMesh()
+	//public void DestroyTorchesForButton()
+	//{
+	//	GameObject[] torches;
+	//	torches = GameObject.FindGameObjectsWithTag("Torch");
+	//	foreach (GameObject torch in torches)
+	//	{
+	//		Destroy(torch);
+	//	}
+	//}
+
+	void CreateWallMesh()
     {
 		CalculateMeshOutlines();
 
@@ -70,15 +83,27 @@ public class MeshGenerator : MonoBehaviour
 		Mesh wallMesh = new Mesh();
 		float wallHeight = 5;
 
+		//int t = 0;
+		var rnd = new System.Random();
+		List<int> randomNumbers = new List<int>();
 		foreach (List<int> outline in outlines)
         {
 			for (int i =0; i< outline.Count - 1; i++)
             {
+				randomNumbers.Add(rnd.Next(0, outline.Count));
+				randomNumbers.Add(rnd.Next(0, outline.Count));
+				randomNumbers.Add(rnd.Next(0, outline.Count));
+
 				int startIndex = wallVertices.Count;
 				wallVertices.Add(vertices[outline[i]]); // left
 				wallVertices.Add(vertices[outline[i+1]]); // right
 				wallVertices.Add(vertices[outline[i]] - Vector3.up*wallHeight); // bottom left
 				wallVertices.Add(vertices[outline[i+1]] - Vector3.up*wallHeight); // bottom right
+
+				//wallForOtherScript.Add(vertices[outline[i]]); // left
+				//wallForOtherScript.Add(vertices[outline[i + 1]]); // right
+				//wallForOtherScript.Add(vertices[outline[i]] - Vector3.up * wallHeight); // bottom left
+				//wallForOtherScript.Add(vertices[outline[i + 1]] - Vector3.up * wallHeight); // bottom right
 
 				wallTriangles.Add(startIndex + 0); // left vertex (mine)
 				wallTriangles.Add(startIndex + 2);
@@ -88,14 +113,25 @@ public class MeshGenerator : MonoBehaviour
 				wallTriangles.Add(startIndex + 1); // top right (mine)
 				wallTriangles.Add(startIndex + 0); // top left (mine)
 
+				
+				
+				//t++;
 
-				GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-				cube.transform.position = wallVertices[i];
 			}
-
 			
+			// Generate torches on walls
+			//for (int j = 0; j < 3; j++)
+			//{
+			//	var torchPrefab = Instantiate(prefabTorch, wallVertices[randomNumbers[j]], Quaternion.identity);
+			//	//torchPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
+			//	Vector3 currentPositionTorch = new Vector3(torchPrefab.transform.position.x, -3.6f, torchPrefab.transform.position.z);
+			//	torchPrefab.transform.position = currentPositionTorch;
+			//	torchPrefab.name = "Torch on wall " + j;
 
+				
+			//}
 		}
+		wallForOtherScript = wallVertices;
 		wallMesh.vertices = wallVertices.ToArray();
 		wallMesh.triangles = wallTriangles.ToArray();
 		walls.mesh = wallMesh;

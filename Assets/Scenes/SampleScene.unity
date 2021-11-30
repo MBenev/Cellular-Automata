@@ -965,6 +965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 1984553117}
   cave: {fileID: 1394598161}
+  prefabTorch: {fileID: 7013795465368730450, guid: 4745d1d7800129342a1b23f92c31715a, type: 3}
   is2D: 0
 --- !u!1 &428934616
 GameObject:
@@ -2727,6 +2728,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 366387293}
+        m_TargetAssemblyTypeName: MeshGenerator, Assembly-CSharp
+        m_MethodName: DestroyTorchesForButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1037297236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3621,6 +3634,10 @@ PrefabInstance:
     - target: {fileID: 7008384287521584254, guid: 4745d1d7800129342a1b23f92c31715a, type: 3}
       propertyPath: m_Name
       value: OldHandTorch
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008384287521584254, guid: 4745d1d7800129342a1b23f92c31715a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7013795465368730450, guid: 4745d1d7800129342a1b23f92c31715a, type: 3}
       propertyPath: m_RootOrder

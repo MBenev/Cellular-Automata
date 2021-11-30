@@ -31,16 +31,28 @@ public class MapGenerator : MonoBehaviour
     private GameObject oldCube;
     private GameObject oldDoor;
     private GameObject oldTorch;
+    private GameObject oldTorchOnWall;
     //private GameObject oldFence;
     public Transform prefabCollectible;
     public Transform prefabDoor;
     public Transform prefabTorch;
     //public Transform prefabFence;
 
-    void Start()
-    {
+    //List<Vector3> wallVertices = new List<Vector3>();
+    MeshGenerator script;
 
+
+    IEnumerator Start()
+    {
+        script = GetComponent<MeshGenerator>();
+        yield return new WaitForEndOfFrame();
+        foreach (Vector3 s in script.wallForOtherScript)
+            print(s);
     }
+    //void Start()
+    //{
+    //    //wallVertices = script.wallForOtherScript;
+    //}
 
     void Update()
     {
@@ -83,19 +95,40 @@ public class MapGenerator : MonoBehaviour
         DestroyCubes();
         DestoryDoor();
         DestroyTorches();
+        //DestroyTorchesOnWalls();
         GenerateMap();
         SpawnObjects();
         ClearCollectiblesText();
     }
-
     private void DestroyTorches()
     {
-        for (int i = 5; i < 8; i++)
+        GameObject[] torches;
+        torches = GameObject.FindGameObjectsWithTag("Torch");
+        foreach(GameObject torch in torches)
         {
-            oldTorch = GameObject.Find("Torch " + i);
-            Destroy(oldTorch);
+            Destroy(torch);
         }
     }
+    //private void DestroyTorchesOnWalls()
+    //{
+    //    for (int i = 0; i < 3; i++)
+    //    {
+    //        //oldTorchOnWall = GameObject.Find("Torch on wall " + i);
+    //        oldTorchOnWall = GameObject.FindGameObjectWithTag("Torch");
+    //        Destroy(oldTorchOnWall);
+    //    }
+    //}
+
+    //private void DestroyTorches()
+    //{
+    //    for (int i = 5; i < 8; i++)
+    //    {
+    //        //oldTorch = GameObject.Find("Torch on ground " + i);
+    //        oldTorch = GameObject.FindGameObjectWithTag("Torch");
+    //        Destroy(oldTorch);
+    //    }
+        
+    //}
 
     private void ClearCollectiblesText()
     {
@@ -155,6 +188,8 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+
+
     void SpawnObjects()
     {
         List<List<Coord>> roomRegions = GetRegions(0);
@@ -170,6 +205,12 @@ public class MapGenerator : MonoBehaviour
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
 
+            // Numbers for ground torches
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+            randomNumbers.Add(rnd.Next(0, roomRegion.Count));
+
+            // Numbers for wall torches
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
             randomNumbers.Add(rnd.Next(0, roomRegion.Count));
@@ -221,7 +262,17 @@ public class MapGenerator : MonoBehaviour
                 //torchPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
                 Vector3 currentPositionTorch = new Vector3(torchPrefab.transform.position.x, -5, torchPrefab.transform.position.z);
                 torchPrefab.transform.position = currentPositionTorch;
-                torchPrefab.name = "Torch " + t;
+                torchPrefab.name = "Torch on ground " + t;
+            }
+
+            // Generate torches on walls
+            for (int p = 8; p < 11; p++)
+            {
+                var torchPrefab = Instantiate(prefabTorch, script.wallForOtherScript[randomNumbers[p]], Quaternion.identity);
+                //torchPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
+                Vector3 currentPositionTorch = new Vector3(torchPrefab.transform.position.x, -3.6f, torchPrefab.transform.position.z);
+                torchPrefab.transform.position = currentPositionTorch;
+                torchPrefab.name = "Torch on wall " + p;
             }
 
         }
