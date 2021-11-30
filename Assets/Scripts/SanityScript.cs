@@ -25,6 +25,10 @@ public class SanityScript : MonoBehaviour
     private void Update()
     {
         sanityMeter.fillAmount = sanity / maxSanity;
+        if (sanity >= 100)
+            sanity = 100;
+        else if (sanity <= 0)
+            sanity = 0;
     }
 
     public void SetMax()
