@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
     public int invertedControls = 1;
     public bool equipped = true;
     public bool isInLight;
+    //MapGenerator script;
+    //public GameObject[] keys;
+    //public int keysAmount;
+    //public List<int> keysAmount;
+    public int keysAmount;
 
     public static Player Instance
     {
@@ -33,11 +38,6 @@ public class Player : MonoBehaviour
     {
         _instance = this;
     }
-
-    //void IsLighted()
-    //{
-    //    isInLight = true;
-    //}
 
     Rigidbody rigidBody;
     Vector3 velocity;
@@ -66,16 +66,25 @@ public class Player : MonoBehaviour
         collected = 0;
     }
     
-    public int GetCollectiblesAmount()
+    public bool AreAllCollected()
     {
-        return collected;
+        //foreach(var temp in keys)
+        //{
+        //    if (temp != null)
+        //    {
+        //        keysAmount++;
+        //    }
+        //}
+        //keysAmount 
+        return collected == keysAmount;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        //range = this.li
+        //script = GetComponent<MapGenerator>();
+
     }
 
     public void EquipTorch()
@@ -88,9 +97,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized * 10;
-
+        
         //CheckForCollectible();
-        if (collected == 3)
+
+        if (collected == keysAmount)
         {
             text.text = "Door is now open!";
         }

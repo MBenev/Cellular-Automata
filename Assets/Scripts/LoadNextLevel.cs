@@ -8,7 +8,7 @@ public class LoadNextLevel : MonoBehaviour
     private GameObject mapGenerator;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player" && Player.Instance.GetCollectiblesAmount() == 3)
+        if (collision.collider.tag == "Player" && Player.Instance.AreAllCollected())
         {
             //Debug.Log("Loading Next Level");
             Player.Instance.GetComponent<StartGame>().GoBackToTool();

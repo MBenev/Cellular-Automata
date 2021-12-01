@@ -934,6 +934,7 @@ MonoBehaviour:
   prefabCollectible: {fileID: 4997397545812890, guid: cdc64358fb600b94c83082531a9b43af, type: 3}
   prefabDoor: {fileID: 400000, guid: 2116aafc135bfb6439d391c4fb83f4cd, type: 3}
   prefabTorch: {fileID: 7013795465368730450, guid: 4745d1d7800129342a1b23f92c31715a, type: 3}
+  amountToSpawn: 0
 --- !u!4 &366387292
 Transform:
   m_ObjectHideFlags: 0
@@ -2508,10 +2509,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1926962869}
   m_HandleRect: {fileID: 251603972}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 30
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 30
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4114,6 +4115,7 @@ MonoBehaviour:
   invertedControls: 1
   equipped: 1
   isInLight: 0
+  keysAmount: 0
   collected: 0
 --- !u!65 &1740536543
 BoxCollider:
@@ -4931,8 +4933,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 173.9, y: 168}
+  m_SizeDelta: {x: -442.4033, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2039184616
 MonoBehaviour:
@@ -4954,7 +4956,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Oh no, you got a blue screen of death. This was dialed down after feedback.
+
+
+    If
+    only clicking this image would magically return you to the game :/'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5151,10 +5157,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1585917166}
   m_HandleRect: {fileID: 221276113}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 30
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 30
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

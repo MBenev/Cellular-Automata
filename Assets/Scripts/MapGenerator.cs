@@ -32,15 +32,13 @@ public class MapGenerator : MonoBehaviour
     private GameObject oldDoor;
     private GameObject oldTorch;
     private GameObject oldTorchOnWall;
-    //private GameObject oldFence;
+
     public Transform prefabCollectible;
     public Transform prefabDoor;
     public Transform prefabTorch;
-    //public Transform prefabFence;
 
-    //List<Vector3> wallVertices = new List<Vector3>();
     MeshGenerator script;
-
+    public int amountToSpawn = 0;
 
     IEnumerator Start()
     {
@@ -49,10 +47,6 @@ public class MapGenerator : MonoBehaviour
         foreach (Vector3 s in script.wallForOtherScript)
             print(s);
     }
-    //void Start()
-    //{
-    //    //wallVertices = script.wallForOtherScript;
-    //}
 
     void Update()
     {
@@ -94,11 +88,11 @@ public class MapGenerator : MonoBehaviour
     {
         DestroyCubes();
         DestoryDoor();
-        DestroyTorches();
-        //DestroyTorchesOnWalls();
+        DestroyTorches();        
         GenerateMap();
         SpawnObjects();
         ClearCollectiblesText();
+        Player.Instance.keysAmount = amountToSpawn;
     }
     private void DestroyTorches()
     {
@@ -109,39 +103,19 @@ public class MapGenerator : MonoBehaviour
             Destroy(torch);
         }
     }
-    //private void DestroyTorchesOnWalls()
-    //{
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        //oldTorchOnWall = GameObject.Find("Torch on wall " + i);
-    //        oldTorchOnWall = GameObject.FindGameObjectWithTag("Torch");
-    //        Destroy(oldTorchOnWall);
-    //    }
-    //}
-
-    //private void DestroyTorches()
-    //{
-    //    for (int i = 5; i < 8; i++)
-    //    {
-    //        //oldTorch = GameObject.Find("Torch on ground " + i);
-    //        oldTorch = GameObject.FindGameObjectWithTag("Torch");
-    //        Destroy(oldTorch);
-    //    }
-        
-    //}
 
     private void ClearCollectiblesText()
     {
         Player.Instance.ClearCollected();
         collectiblesText.text = "Door locked.";
+        Player.Instance.keysAmount = 0;
+        Player.Instance.keysAmount = 0;
     }
 
     private void DestoryDoor()
     {
         oldDoor = GameObject.Find("Door");
         Destroy(oldDoor);
-        //oldFence = GameObject.Find("Fence");
-        //Destroy(oldFence);
     }
 
     void GenerateMap()
@@ -195,6 +169,19 @@ public class MapGenerator : MonoBehaviour
         List<List<Coord>> roomRegions = GetRegions(0);
         var rnd = new System.Random();
 
+        
+        int size = Mathf.RoundToInt((width + height) / 2);
+        if (size <= 50)
+        {
+            amountToSpawn = 1;
+        }
+        else if (size > 50 && size < 70)
+        {
+            amountToSpawn = 2;
+        }
+        else
+            amountToSpawn = 3;
+
         List<int> randomNumbers = new List<int>();
         foreach (List<Coord> roomRegion in roomRegions)
         {
@@ -233,10 +220,9 @@ public class MapGenerator : MonoBehaviour
                 HasDuplicates = (randomNumbers.Distinct().Count() < randomNumbers.Count);
             }
 
-            //Debug.Log(HasDuplicates);
 
             // Generate 3 collectible objects in open spaces
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < amountToSpawn; j++)
             {
                 var newPrefab = Instantiate(prefabCollectible, CoordToWorldPoint(roomRegion[randomNumbers[j]]), Quaternion.identity);
                 //newPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
@@ -256,7 +242,7 @@ public class MapGenerator : MonoBehaviour
             Player.Instance.transform.position = CoordToWorldPoint(roomRegion[randomNumbers[4]]);
 
             // Generate 3 torches on the ground
-            for(int t = 5;t<8;t++)
+            for(int t = 5;t<5+amountToSpawn;t++)
             {
                 var torchPrefab = Instantiate(prefabTorch, CoordToWorldPoint(roomRegion[randomNumbers[t]]), Quaternion.identity);
                 //torchPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
@@ -266,7 +252,7 @@ public class MapGenerator : MonoBehaviour
             }
 
             // Generate torches on walls
-            for (int p = 8; p < 11; p++)
+            for (int p = 8; p < 8+amountToSpawn; p++)
             {
                 var torchPrefab = Instantiate(prefabTorch, script.wallForOtherScript[randomNumbers[p]], Quaternion.identity);
                 //torchPrefab.GetComponent<Renderer>().material.color = new Color(0, 255, 255);
