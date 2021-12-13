@@ -2,4 +2,4 @@
 * text=auto
 
 * linguist-vendored
-*.ASP.NET linguist-detectable=false
+*.aspx linguist-detectable=false
