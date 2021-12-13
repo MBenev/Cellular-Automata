@@ -16,10 +16,7 @@ public class Player : MonoBehaviour
     public int invertedControls = 1;
     public bool equipped = true;
     public bool isInLight;
-    //MapGenerator script;
-    //public GameObject[] keys;
-    //public int keysAmount;
-    //public List<int> keysAmount;
+
     public int keysAmount;
 
     public static Player Instance
@@ -68,14 +65,6 @@ public class Player : MonoBehaviour
     
     public bool AreAllCollected()
     {
-        //foreach(var temp in keys)
-        //{
-        //    if (temp != null)
-        //    {
-        //        keysAmount++;
-        //    }
-        //}
-        //keysAmount 
         return collected == keysAmount;
     }
 
@@ -83,8 +72,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        //script = GetComponent<MapGenerator>();
-
     }
 
     public void EquipTorch()
@@ -97,8 +84,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized * 10;
-        
-        //CheckForCollectible();
+
 
         if (collected == keysAmount)
         {

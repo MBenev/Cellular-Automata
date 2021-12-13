@@ -8,6 +8,7 @@ public class StartGame : MonoBehaviour
     public GameObject MainCamera;
     public GameObject Panel;
     public GameObject collectiblesText;
+    public GameObject effectsText;
     public GameObject sanityMeter;
     CameraFollow script;
     public bool gameActive = false;
@@ -26,7 +27,7 @@ public class StartGame : MonoBehaviour
             else
             {
                 Application.Quit();
-                UnityEditor.EditorApplication.isPlaying = false;
+                //UnityEditor.EditorApplication.isPlaying = false;
             }
         }
     }
@@ -38,6 +39,7 @@ public class StartGame : MonoBehaviour
         MainCamera.transform.rotation = cameraMenuRot;
         Panel.SetActive(true);
         collectiblesText.SetActive(false);
+        effectsText.SetActive(false);
         sanityMeter.SetActive(false);
         gameActive = false;
     }

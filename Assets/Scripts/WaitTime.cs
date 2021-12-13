@@ -30,5 +30,6 @@ public class WaitTime : MonoBehaviour
             light.SetActive(true);
         if (Player.Instance.invertedControls == -1)
             Player.Instance.invertedControls = 1;
+        sanityMeter.GetComponent<SanityScript>().text.text = "No effect";
     }
 }

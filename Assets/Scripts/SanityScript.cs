@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SanityScript : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class SanityScript : MonoBehaviour
     public GameObject light;
     bool happenedInTheLast5Seconds = false;
 
+    public TextMeshProUGUI text;
     private void Start()
     {
         sanityMeter = GetComponent<Image>();
@@ -65,6 +67,11 @@ public class SanityScript : MonoBehaviour
         waitTimeScript.enabled = false;
     }
 
+    public void ResetEffectsText()
+    {
+        text.text = "No effect";
+    }
+
     private void ShowEvent()
     {
         if(!happenedInTheLast5Seconds)
@@ -79,15 +86,18 @@ public class SanityScript : MonoBehaviour
                 case 0:
                     Debug.Log("case 0");
                     //EnableTimeScript();
+                    text.text = "BSOD";
                     eventButton.SetActive(true);
                     break;
                 case 1:
                     Debug.Log("case 1");
+                    text.text = "No light from torch";
                     light.SetActive(false);
                     EnableTimeScript();
                     break;
                 case 2:
                     Debug.Log("case 2");
+                    text.text = "Inverted Controls";
                     Player.Instance.invertedControls = -1;
                     EnableTimeScript();
                     break;
