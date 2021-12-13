@@ -2,4 +2,4 @@
 * text=auto
 
 * linguist-vendored
-*.aspx linguist-detectable=false
+*.aspx linguist-language=C#
